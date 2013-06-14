@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<config charset="UTF-8">
+
+ <var-def name="blogs" >
+
+        
+   <xml-to-json>
+
+<xquery>
+    <xq-param name="doc">
+        <html-to-xml>
+            <http url="${startUrl}"/>
+        </html-to-xml>
+    </xq-param>
+    <xq-expression><![CDATA[
+        declare variable $doc as node() external;
+        let $blogs := $doc//div[@class='date-outer']
+            return
+                <xml-to-json>
+                  {
+					for $blog in $blogs
+					return <posts>
+					            <date>{data($blog//h2[@class='date-header'])}</date>
+								<content>{data($blog//div[contains(@class,'post-body')])}</content>
+						   </posts>
+				   }
+                
+                </xml-to-json>
+    ]]></xq-expression>
+</xquery>
+
+
+    </xml-to-json>
+    </var-def>
+  
+  
+ 
+</config>

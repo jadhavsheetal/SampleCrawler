@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+<bean id="crawlingService" class="com.sheetal.sample.crawler.service.CrawlingServiceImpl">
+ <property name="scraperFactory" ref="scraperFactory" />
+</bean>
+
+<bean id="AuthorAction" class="com.sheetal.sample.crawler.web.AuthorAction" scope="prototype">
+<property name="crawlService" ref="crawlingService"/>
+</bean>
+
+<bean id="scraperFactory" class="org.springframework.beans.factory.config.ServiceLocatorFactoryBean">
+<property name="serviceLocatorInterface" value="com.sheetal.sample.crawler.service.ScraperFactory" />
+ <property name="serviceMappings">
+  <props>
+   <prop key="blogspot">blogSpotScraper</prop>
+  </props>
+  </property>
+ </bean>
+ 
+ 
+<bean id="blogSpotScraper" class="com.sheetal.sample.crawler.scrapers.BlogSpotScraper" > 
+ <property name="scraperXml" value="classpath:webharvest/blogspot.xml" />
+</bean>
+</beans>

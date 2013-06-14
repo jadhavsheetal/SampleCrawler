@@ -1,0 +1,65 @@
+#blogs_box {
+    display:block;
+	width:950px;
+	height:300px;
+	margin:0;
+	padding:5px;
+	color:#666666;
+	background-color:#FFFFFF;
+}
+#blogs_box a{
+	background:transparent;
+	}
+
+#blogs_box a, #blogs_box ul, #blogs_box img{
+	margin:0;
+	padding:0;
+	border:none;
+	outline:none;
+	list-style:none;
+	text-decoration:none;
+	}
+
+
+/* ----------------------------------------------Generalise-------------------------------------*/
+
+#featured_content, .blog_box, .blog_box img{
+	width:950px;
+	}
+
+.blog_box, .blog_box img{
+	}
+/* ----------------------------------------------Content-------------------------------------*/
+
+.blog_box .floater{
+	width:850px;
+	padding:30px;
+	background-color:#D1D1D1;
+	margin:20px;
+	}
+
+.blog_box p{
+	margin:0;
+	padding:0;
+	line-height:1.6em;
+	}
+
+.blog_box p.readmore{text-align:right; margin:0;}
+	
+	/* ----------------------------------------------Rounded Corners-------------------------------------*/
+
+#blogs_box .overlay_left, #blogs_box .overlay_right{
+	display:block;
+	position:absolute;
+	z-index:1000;
+	top:0;
+	left:0;
+	width:15px;
+	height:310px;
+	background-image:url("../academic-education/images/featured_slide_left.png");
+	}
+
+#blogs_box .overlay_right{
+	left:945px;
+	background-image:url("../academic-education/images/featured_slide_right.png");
+	}
